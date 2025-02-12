@@ -1,26 +1,30 @@
+import { useState } from "react";
 import { MessageApp } from "./MessageApp";
 
 const initialState = {
-  username: "",
-  password: "",
+  username: "username",
+  password: "ggary123",
 };
 
 export const FormLogin = () => {
+  const [satate, setState] = useState(initialState);
+  const { username, password } = satate;
+
   return (
     <>
       <h1>Login</h1>
       <hr />
 
-      <input type="text" name="username" value="" />
+      <input type="text" name="username" value={username} />
       <br />
       <br />
-      <input type="password" name="password" value="" />
+      <input type="password" name="password" value={password} />
 
       <br />
       <button>Acceder</button>
       <hr />
 
-      <MessageApp />
+      {username === "ggary" && <MessageApp />}
     </>
   );
 };
