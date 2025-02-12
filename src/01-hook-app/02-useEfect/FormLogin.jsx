@@ -1,5 +1,10 @@
 import { MessageApp } from "./MessageApp";
 
+const initialState = {
+  username: "",
+  password: "",
+};
+
 export const FormLogin = () => {
   return (
     <>
