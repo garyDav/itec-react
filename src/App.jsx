@@ -1,7 +1,7 @@
 // import { CounterApp } from "./01-hook-app/01-useState/CounterApp";
-import { useEffect, useState } from "react";
-import { CounterWithCustomHook } from "./01-hook-app/01-useState/CounterWithCustomHook";
-import { MessageApp } from "./01-hook-app/02-useEfect/mensaje";
+// import { CounterWithCustomHook } from "./01-hook-app/01-useState/CounterWithCustomHook";
+// import { MessageApp } from "./01-hook-app/02-useEfect/MessageApp";
+
 import { FormLogin } from "./01-hook-app/02-useEfect/FormLogin";
 
 export const HooksApp = () => {
@@ -11,14 +11,7 @@ export const HooksApp = () => {
  })
   return (
     <>
-      <MessageApp />
-      <FormLogin/>
-      ,<h2>{//expresiones JS
-      // Operaciones matematicas,llamados a variables
-      message}</h2>
-      <button onClick={()=>{
-        setMessage("Hola Mundo")
-      }}>Mostrar Mensaje </button>
+      <FormLogin />
     </>
   );
 };

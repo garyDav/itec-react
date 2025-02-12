@@ -1,15 +1,21 @@
-export const FormLogin=()=>{
-    return(
-        <>
-       <H1>LOGIN</H1>
-       <hr />
-       <input type="text" name="username" value="" />
-       <br />
-       <input type="password" name="password" value=""/>
-       <hr />
-       <button>Acceder</button>
-       <hr />
-       <MessageApp/>
-       </>
-    )
-}
+import { MessageApp } from "./MessageApp";
+
+export const FormLogin = () => {
+  return (
+    <>
+      <h1>Login</h1>
+      <hr />
+
+      <input type="text" name="username" value="" />
+      <br />
+      <br />
+      <input type="password" name="password" value="" />
+
+      <br />
+      <button>Acceder</button>
+      <hr />
+
+      <MessageApp />
+    </>
+  );
+};
