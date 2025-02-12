@@ -4,27 +4,13 @@ export const MessageApp = () => {
   const [message, setMessage] = useState("");
 
   useEffect(() => {
+    // if (message !== "") setMessage(message + ", hola don Jose"); No cometer este error
     console.log("Componente montado");
-    // if (message !== "") setMessage(message + ", hola don Jose");
   }, [message]);
 
   return (
     <>
-      <h1>MessageApp</h1>
-      <hr />
-      <h2>
-        {
-          // Expresion JS
-          message
-        }
-      </h2>
-      <button
-        onClick={() => {
-          setMessage("Hola don Pepito");
-        }}
-      >
-        Mostrar Mensaje
-      </button>
+      <h4>{message}</h4>
     </>
   );
 };
