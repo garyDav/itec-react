@@ -5,10 +5,6 @@
 import { FormLogin } from "./01-hook-app/02-useEfect/FormLogin";
 
 export const HooksApp = () => {
- const [message,setMessage]=useState("")
- useEffect(()=>{
-  console.log( "llamada del useEffecto");
- })
   return (
     <>
       <FormLogin />
