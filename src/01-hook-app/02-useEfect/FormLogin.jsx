@@ -16,7 +16,7 @@ export const FormLogin = () => {
       <h1>Login</h1>
       <hr />
 
-      <input type="text" name="username" value= {form.username} />
+      <input type="text" name="username" value= {username} />
       <input
         type="text"
         name="username"
@@ -27,8 +27,15 @@ export const FormLogin = () => {
       />
       <br />
       <br />
-      <input type="password" name="password" value= {form.password} />
       <input type="password" name="password" value={password} />
+      <input
+      type="text"
+      name="password"
+      value={password}
+      onChange={(event) => {
+        setState({ ...state, password: event.target.value });
+      }}
+      />
 
       <br />
       <button>Acceder</button>
