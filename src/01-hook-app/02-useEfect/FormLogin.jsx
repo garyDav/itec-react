@@ -3,17 +3,26 @@ import { MessageApp } from "./MessageApp";
 
 const initialState = {
   username: "",
-  password: ""
+  password: "",
 };
 
 export const FormLogin = () => {
-  const [{username,password}, setState] = useState(initialState);
+  const [state, setState] = useState(initialState);
+  const { username, password } = state;
+
   return (
     <>
       <h1>Login</h1>
       <hr />
 
-      <input type="text" name="username" value={username} />
+      <input
+        type="text"
+        name="username"
+        value={username}
+        onChange={(event) => {
+          setState({ ...state, username: event.target.value });
+        }}
+      />
       <br />
       <br />
       <input type="password" name="password" value={password} />
@@ -22,7 +31,7 @@ export const FormLogin = () => {
       <button>Acceder</button>
       <hr />
 
-      <MessageApp />
+      {username === "ggary" && <MessageApp />}
     </>
   );
 };
