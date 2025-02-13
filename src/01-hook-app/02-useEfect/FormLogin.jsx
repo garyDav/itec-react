@@ -10,6 +10,11 @@ export const FormLogin = () => {
   const [state, setState] = useState(initialState);
   const { username, password } = state;
 
+  const handleChange = (evento) => {
+    const { name, value } = evento.target;
+    setState({ ...state, [name]: value });
+  };
+
   return (
     <>
       <h1>Login</h1>
@@ -19,13 +24,11 @@ export const FormLogin = () => {
         type="text"
         name="username"
         value={username}
-        onChange={(event) => {
-          setState({ ...state, username: event.target.value });
-        }}
+        onChange={handleChange}
       />
       <br />
       <br />
-      <input type="password" name="password" value={password} />
+      <input type="password" name="password" value={handleChange} />
 
       <br />
       <button>Acceder</button>
