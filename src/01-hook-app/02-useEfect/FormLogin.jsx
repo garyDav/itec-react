@@ -1,27 +1,22 @@
+import { useState } from "react";
 import { MessageApp } from "./MessageApp";
 
-const initialState = {
-  username: "norma",
-  password: 345,
-};
-
 export const FormLogin = () => {
-  const [form, setForm] = useState(initialState);
   return (
     <>
       <h1>Login</h1>
       <hr />
 
-      <input type="text" name="username" value= {form.username} />
+      <input type="text" name="username" value="" />
       <br />
       <br />
-      <input type="password" name="password" value= {form.password} />
+      <input type="password" name="password" value="" />
 
       <br />
       <button>Acceder</button>
       <hr />
 
-      <MessageApp />
+      {username === "ggary" && <MessageApp />}
     </>
   );
 };
