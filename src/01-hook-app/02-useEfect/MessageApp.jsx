@@ -8,6 +8,7 @@ export const MessageApp = () => {
     // if (message !== "") setMessage(message + ", hola don Jose"); No cometer este error
 
     const onMouseMove = ({ x, y }) => {
+      console.log("mousemove");
       setCoords({ x, y });
     };
 
