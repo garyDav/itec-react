@@ -36,7 +36,7 @@ export const FormLogin = () => {
       />
 
       <br />
-      <button>Acceder</button>
+      <button> Ingreso  </button>
       <hr />
 
       {username === "ggary" && <MessageApp />}
