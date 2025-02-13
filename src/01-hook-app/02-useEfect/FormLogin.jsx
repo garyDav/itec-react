@@ -2,20 +2,27 @@ import { useState } from "react";
 import { MessageApp } from "./MessageApp";
 
 const initialState = {
-  username: "username",
-  password: "ggary123",
+  username: "",
+  password: "",
 };
 
 export const FormLogin = () => {
-  const [satate, setState] = useState(initialState);
-  const { username, password } = satate;
+  const [state, setState] = useState(initialState);
+  const { username, password } = state;
 
   return (
     <>
       <h1>Login</h1>
       <hr />
 
-      <input type="text" name="username" value={username} />
+      <input
+        type="text"
+        name="username"
+        value={username}
+        onChange={(event) => {
+          setState({ ...state, username: event.target.value });
+        }}
+      />
       <br />
       <br />
       <input type="password" name="password" value={password} />
