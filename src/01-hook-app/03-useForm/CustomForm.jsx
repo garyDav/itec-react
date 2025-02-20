@@ -13,6 +13,7 @@ export const CustomForm = () => {
   const { formValues, onInputChange, onReset } = UseForm(
     initialState,
     setValidName,
+    setValidPassword,
   );
 
   const { name, email, password } = formValues;
