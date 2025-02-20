@@ -9,6 +9,7 @@ const initialState = {
 
 export const CustomForm = () => {
   const [validName, setValidName] = useState(true);
+  const [validPassword, setValidPassword] = useState(true);
   const { formValues, onInputChange, onReset } = UseForm(
     initialState,
     setValidName,
@@ -25,7 +26,12 @@ export const CustomForm = () => {
       valid = false;
       setValidName(false);
     }
-
+    if (password.length < 6 ) {
+      valid = false;
+      setValidPassword(false);
+    } else {
+      setValidPassword(true);
+    }
     if (valid) {
       // Save
       // onReset();
@@ -79,8 +85,9 @@ export const CustomForm = () => {
             value={password}
             onChange={onInputChange}
           />
-        </div>
-
+         </div>
+        {!validPassword &&(
+        <span>La contraseña debe tener al menos 6 caracteres</span>)}
         <hr />
         <button type="submit">Guardar</button>
         <br />
