@@ -9,9 +9,11 @@ const initialState = {
 
 export const CustomForm = () => {
   const [validName, setValidName] = useState(true);
+  const [validPassword, setValidPassword] = useState(true);
   const { formValues, onInputChange, onReset } = UseForm(
     initialState,
     setValidName,
+    setValidPassword,
   );
 
   const { name, email, password } = formValues;
@@ -24,6 +26,11 @@ export const CustomForm = () => {
     if (name.length < 3) {
       valid = false;
       setValidName(false);
+    }
+
+    if(password.length < 8){
+        valid = false;
+        setValidPassword(false);
     }
 
     if (valid) {
@@ -80,6 +87,10 @@ export const CustomForm = () => {
             onChange={onInputChange}
           />
         </div>
+          <br />
+          {!validPassword && (
+            <span>El password no tiene el tamaño adecuado</span>
+          )}
 
         <hr />
         <button type="submit">Guardar</button>
