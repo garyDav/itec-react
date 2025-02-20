@@ -10,9 +10,8 @@ export const FormLogin = () => {
   const [state, setState] = useState(initialState);
   const { username, password } = state;
 
-  const manejarChange = (event) => {
-    const { name, value } = event.target;
-    console.log(name, value);
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
     setState({ ...state, [name]: value });
   };
 
@@ -25,12 +24,16 @@ export const FormLogin = () => {
         type="text"
         name="username"
         value={username}
-        onChange={manejarChange}
+        onChange={handleChange}
       />
       <br />
       <br />
-      <input type="password" name="password" value={password} 
-        onChange={manejarChange} />
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+      />
 
       <br />
       <button>Acceder</button>
