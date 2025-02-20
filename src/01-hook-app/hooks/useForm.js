@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const UseForm = (initialState) => {
+export const UseForm = (initialState, setValidName) => {
   const [formValues, setFormValues] = useState(initialState);
 
   const onInputChange = ({ target: { name, value } }) => {
@@ -8,10 +8,10 @@ export const UseForm = (initialState) => {
       ...formValues,
       [name]: value,
     });
+    setValidName(true);
   };
 
-  const onReset = (e) => {
-    e.preventDefault();
+  const onReset = () => {
     setFormValues(initialState);
   };
 

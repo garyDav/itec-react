@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { UseForm } from "../hooks/useForm";
 
 const initialState = {
@@ -7,16 +8,37 @@ const initialState = {
 };
 
 export const CustomForm = () => {
-  const { formValues, onInputChange, onReset } = UseForm(initialState);
+  const [validName, setValidName] = useState(true);
+  const { formValues, onInputChange, onReset } = UseForm(
+    initialState,
+    setValidName,
+  );
 
   const { name, email, password } = formValues;
+
+  const onSave = (e) => {
+    e.preventDefault();
+    let valid = true;
+    // Validaciones
+    // name ~ana
+    if (name.length < 3) {
+      valid = false;
+      setValidName(false);
+    }
+
+    if (valid) {
+      // Save
+      // onReset();
+      console.log("Formulario guardado");
+    }
+  };
 
   return (
     <>
       <h1>Registro Usuario</h1>
       <hr />
 
-      <form onSubmit={onReset}>
+      <form onSubmit={onSave}>
         <div className="form-group">
           <input
             type="text"
@@ -27,6 +49,10 @@ export const CustomForm = () => {
             value={name}
             onChange={onInputChange}
           />
+          <br />
+          {!validName && (
+            <span>El nombre es requerido / introduzca un nombre valido.</span>
+          )}
         </div>
 
         <br />
@@ -57,6 +83,10 @@ export const CustomForm = () => {
 
         <hr />
         <button type="submit">Guardar</button>
+        <br />
+        <button type="button" onClick={onReset}>
+          Cancelar
+        </button>
       </form>
     </>
   );
