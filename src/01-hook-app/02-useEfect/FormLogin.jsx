@@ -10,8 +10,9 @@ export const FormLogin = () => {
   const [state, setState] = useState(initialState);
   const { username, password } = state;
 
-  const handleChange = ({ target }) => {
-    const { name, value } = target;
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    console.log(name, value);
     setState({ ...state, [name]: value });
   };
 
@@ -28,12 +29,8 @@ export const FormLogin = () => {
       />
       <br />
       <br />
-      <input
-        type="password"
-        name="password"
-        value={password}
-        onChange={handleChange}
-      />
+      <input type="password" name="password" value={password} 
+        onChange={handleChange} />
 
       <br />
       <button>Acceder</button>

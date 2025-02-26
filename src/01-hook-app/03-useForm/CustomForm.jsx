@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { UseForm } from "../hooks/useForm";
+import { useEffect } from "react";
 
 const initialState = {
   name: "",
@@ -7,13 +8,14 @@ const initialState = {
   password: "",
 };
 
+const usuarios = [];
+
 export const CustomForm = () => {
   const [validName, setValidName] = useState(true);
   const [validPassword, setValidPassword] = useState(true);
-  const { formValues, onInputChange, onReset } = UseForm(
+  const { formValues, onInputChange, onReset, formValid, onValidError } = UseForm(
     initialState,
     setValidName,
-    setValidPassword,
   );
 
   const { name, email, password } = formValues;
@@ -28,17 +30,32 @@ export const CustomForm = () => {
       setValidName(false);
     }
 
-    if(password.length < 8){
+    if(password.length < 6){
         valid = false;
         setValidPassword(false);
     }
 
     if (valid) {
       // Save
-      // onReset();
+      usuarios.push(formValues);
+      onReset();
       console.log("Formulario guardado");
+    }else{
+      onValidError();
     }
   };
+
+  const onSearch = (e) => {
+    e.preventDefault();
+    console.log("Buscando...");
+  } 
+
+  useEffect(() => {
+    if (formValid) {
+      setValidName(true);
+      setValidPassword(true);
+    }
+  }, [formValid]); 
 
   return (
     <>
@@ -99,6 +116,17 @@ export const CustomForm = () => {
           Cancelar
         </button>
       </form>
+      <div>
+        <ul>
+          {usuarios.map((usuario,index)=>(
+            <li key={index}>
+              {++index} {usuario.name} - {usuario.email}</li>
+          ))}
+          <li>Nombre: {name}</li>
+          <li>Email: {email}</li>
+          <li>Password: {password}</li>
+        </ul>
+      </div>
     </>
   );
 };
