@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export const UseForm = (initialState, setValidName) => {
+export const UseForm = (initialState) => {
   const [formValues, setFormValues] = useState(initialState);
   const [formValid, setFormValid] = useState(true);
 
@@ -16,9 +16,10 @@ export const UseForm = (initialState, setValidName) => {
     setFormValues(initialState);
   };
 
-  const onValidError=()=>{
+  const onValidError = () => {
     setFormValid(false);
-  }
+  };
+
   return {
     formValues,
     onInputChange,
