@@ -1,6 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Dashboard } from "./componets/Dashboard";
 import { Login } from "./componets/Login";
+import { PublicRoute } from "./PublicRoute";
 
 export default function AppRouter() {
   return (
@@ -8,7 +9,16 @@ export default function AppRouter() {
       <Routes>
         <Route path="/" element={<Dashboard />} />
 
-        <Route path="/login" element={<Login />} />
+        <Route
+          path="/login"
+          element={
+            <PublicRoute isAuthenticated={false}>
+              <Login />
+            </PublicRoute>
+          }
+        />
+
+        <Route path="/*" element={<Navigate to="/login" />} />
       </Routes>
     </BrowserRouter>
   );
