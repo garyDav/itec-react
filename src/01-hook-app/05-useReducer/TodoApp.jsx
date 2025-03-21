@@ -1,7 +1,20 @@
+import { useTodos } from "../hooks/useTodos";
+
 export const TodoApp = () => {
+  const {
+    todos,
+    todosCount,
+    pendingTodosCount,
+    handleNewTodo,
+    handleDeleteTodo,
+    handleToggleTodo,
+  } = useTodos();
+
   return (
     <>
-      <h1>TodoApp</h1>
+      <h1>
+        TodoApp: {todosCount}, <small>pendientes: {pendingTodosCount}</small>
+      </h1>
       <hr />
 
       <div>
