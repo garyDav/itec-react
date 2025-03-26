@@ -16,7 +16,7 @@ export const useTodos = () => {
 
   const handleNewTodo = (todo) => {
     const action = {
-      type: "[TODO] add Todo",
+      type: "[TODO] Add Todo",
       payload: todo,
     };
 
