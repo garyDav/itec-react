@@ -71,29 +71,38 @@ export const useFetch = () => {
   };*/
 
   const getFetch = async () => {
-    const res = await fetch("https://pokeapi.co/api/v2/pokemon/25");
+    try {
+      const res = await fetch("https://pokeapi.co/api/v2/pokemon/25");
 
-    if (!res.ok) {
+      if (!res.ok) {
+        setState({
+          data: null,
+          isLoading: false,
+          hasError: true,
+          error: {
+            status: res.status,
+            message: res.statusText,
+          },
+        });
+
+        return;
+      }
+
+      const data = await res.json();
+      setState({
+        data: data,
+        isLoading: false,
+        hasError: false,
+        error: null,
+      });
+    } catch (error) {
       setState({
         data: null,
         isLoading: false,
         hasError: true,
-        error: {
-          status: res.status,
-          message: res.statusText,
-        },
+        error: error,
       });
-
-      return;
     }
-
-    const data = await res.json();
-    setState({
-      data: data,
-      isLoading: false,
-      hasError: false,
-      error: null,
-    });
   };
 
   return {

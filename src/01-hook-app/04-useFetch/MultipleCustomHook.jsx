@@ -10,7 +10,11 @@ export const MultipleCustomHooks = () => {
 
       {isLoading && <p>Cargando...</p>}
 
-      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {hasError ? (
+        <pre>Error en la petición</pre>
+      ) : (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      )}
     </>
   );
 };
