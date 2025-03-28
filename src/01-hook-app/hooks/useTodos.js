@@ -9,8 +9,7 @@ export const useTodos = () => {
       done: false,
     },
   ]);
-  
-  
+
   const [message, setMessage] = useState("");
 
   useEffect(() => {
@@ -43,11 +42,10 @@ export const useTodos = () => {
 
     dispatch(action);
 
-   
-    const updatedTodo = todos.find(todo => todo.id === id);
+    const updatedTodo = todos.find((todo) => todo.id === id);
     if (updatedTodo) {
       const newMessage = `El TODO "${updatedTodo.todo}" ahora está ${updatedTodo.done ? "pendiente" : "completado"}`;
-      setMessage(newMessage); 
+      setMessage(newMessage);
     }
   };
 
@@ -64,7 +62,7 @@ export const useTodos = () => {
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo,
-    toggleFirstTodo, 
-    message,  
+    toggleFirstTodo,
+    message,
   };
 };
