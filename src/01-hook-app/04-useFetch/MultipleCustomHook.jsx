@@ -1,7 +1,20 @@
 import { useFetch } from "../hooks/useFetch";
 
 export const MultipleCustomHooks = () => {
-  useFetch();
+  const { data, isLoading, hasError } = useFetch();
 
-  return <div>MultipleCustomHooks</div>;
+  return (
+    <>
+      <h1>Información de Pokémon</h1>
+      <hr />
+
+      {isLoading && <p>Cargando...</p>}
+
+      {hasError ? (
+        <pre>Error en la petición</pre>
+      ) : (
+        <pre>{JSON.stringify(data, null, 2)}</pre>
+      )}
+    </>
+  );
 };
