@@ -19,7 +19,7 @@ export const TodoApp = () => {
 
   const onFormSubmit = (event) => {
     event.preventDefault();
-
+    if (formValues.todo.trim().length === 0) return;
     const newTodo = {
       id: new Date().getTime(),
       done: false,
@@ -42,7 +42,13 @@ export const TodoApp = () => {
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
-              <span> {todo.todo} </span>
+               <span
+                style={{
+                  textDecoration: todo.done ? "line-through" : "none",
+                  cursor: "pointer",
+                }}
+                onClick={() => handleToggleTodo(todo.id)}
+              > {todo.todo} </span>
               <button onClick={() => handleDeleteTodo(todo.id)}>Borrar</button>
               <br />
               <br />
