@@ -42,13 +42,16 @@ export const TodoApp = () => {
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
-               <span
+              <span
                 style={{
                   textDecoration: todo.done ? "line-through" : "none",
                   cursor: "pointer",
                 }}
                 onClick={() => handleToggleTodo(todo.id)}
-              > {todo.todo} </span>
+              >
+                {" "}
+                {todo.todo}{" "}
+              </span>
               <button onClick={() => handleDeleteTodo(todo.id)}>Borrar</button>
               <br />
               <br />
@@ -79,3 +82,4 @@ export const TodoApp = () => {
     </>
   );
 };
+
