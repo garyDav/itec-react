@@ -13,6 +13,7 @@ export const TodoApp = () => {
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo,
+    message,  // Añadimos el mensaje
   } = useTodos();
 
   const { formValues, onInputChange, onReset } = UseForm(initialState);
@@ -42,8 +43,16 @@ export const TodoApp = () => {
         <ul>
           {todos.map((todo) => (
             <li key={todo.id}>
-              <span> {todo.todo} </span>
+              <span style={{ textDecoration: todo.done ? "line-through" : "none" }}>
+                {todo.todo}
+              </span>
               <button onClick={() => handleDeleteTodo(todo.id)}>Borrar</button>
+
+              {/* Botón para completar o desmarcar */}
+              <button onClick={() => handleToggleTodo(todo.id)}>
+                {todo.done ? "Desmarcar" : "Completar"}
+              </button>
+
               <br />
               <br />
             </li>
@@ -69,7 +78,11 @@ export const TodoApp = () => {
             <button type="submit">Agregar</button>
           </form>
         </div>
+
+        {/* Mostrar el mensaje en la página */}
+        {message && <p>{message}</p>} {/* Aquí mostramos el mensaje cuando se actualiza */}
       </div>
     </>
   );
 };
+

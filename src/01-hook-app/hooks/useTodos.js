@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useState } from "react";
 import { todoReducer } from "../05-useReducer/todoReducer";
 
 export const useTodos = () => {
@@ -9,6 +9,9 @@ export const useTodos = () => {
       done: false,
     },
   ]);
+  
+  
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -39,16 +42,29 @@ export const useTodos = () => {
     };
 
     dispatch(action);
+
+   
+    const updatedTodo = todos.find(todo => todo.id === id);
+    if (updatedTodo) {
+      const newMessage = `El TODO "${updatedTodo.todo}" ahora está ${updatedTodo.done ? "pendiente" : "completado"}`;
+      setMessage(newMessage); 
+    }
+  };
+
+  const toggleFirstTodo = () => {
+    if (todos.length > 0) {
+      handleToggleTodo(todos[0].id);
+    }
   };
 
   return {
     todos,
-
     todosCount: todos.length,
     pendingTodosCount: todos.filter((todo) => !todo.done).length,
-
     handleNewTodo,
     handleDeleteTodo,
     handleToggleTodo,
+    toggleFirstTodo, 
+    message,  
   };
 };
