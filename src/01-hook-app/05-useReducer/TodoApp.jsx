@@ -1,6 +1,8 @@
 import { UseForm } from "../hooks/useForm";
 import { useTodos } from "../hooks/useTodos";
 
+import { TodoItem } from "./TodoItem";
+
 const initialState = {
   todo: "",
 };
@@ -41,12 +43,11 @@ export const TodoApp = () => {
       <div>
         <ul>
           {todos.map((todo) => (
-            <li key={todo.id}>
-              <span> {todo.todo} </span>
-              <button onClick={() => handleDeleteTodo(todo.id)}>Borrar</button>
-              <br />
-              <br />
-            </li>
+            <TodoItem
+              key={todo.id}
+              todo={todo}
+              handleDeleteTodo={handleDeleteTodo}
+            />
           ))}
         </ul>
 
